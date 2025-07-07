@@ -26,82 +26,44 @@ export const FONT_FAMILY = {
 export const THEME = {
   colors: {
     Primary: {
-      Light: '#E6F0FF',
-      Light_hover: '#D9E7FF',
-      Light_active: '#B3CCFF',
-      Normal: '#1E40AF',
-      Normal_hover: '#1B3A9E',
-      Normal_active: '#18348C',
-      Dark: '#1E3A8A',
-      Dark_hover: '#172554',
-      Dark_active: '#0F172A',
-      Darker: '#0B1426',
+      Light: '#EDF5F4',
+      Light_hover: '#E4F0EE',
+      Light_active: '#C7E0DC',
+      Normal: '#4A9B8E',
+      Normal_hover: '#438C80',
+      Normal_active: '#3B7C72',
+      Dark: '#38746B',
+      Dark_hover: '#2C5D55',
+      Dark_active: '#214640',
+      Darker: '#1A3632',
     },
     Secondary: {
-      Light: '#FFFBFC',
-      Light_hover: '#FFF9FA',
-      Light_active: '#FFF3F5',
-      Normal: '#FFD7E0',
-      Normal_hover: '#E6C2CA',
-      Normal_active: '#CCACB3',
-      Dark: '#BFA1A8',
-      Dark_hover: '#998186',
-      Dark_active: '#736165',
-      Darker: '#594B4E',
-    },
-    Calyx: {
-      Primary: '#6071F1',
-      PrimaryHover: '#5A67D8',
-      Secondary: '#4FD1C5',
-      SecondaryHover: '#38B2AC',
-      Background: '#F9FAFB',
-      BackgroundAlt: '#E2E8F0',
-      Accent: {
-        Green: '#C6F6D5',
-        Peach: '#FEEBC8',
-        Purple: '#E9D5FF',
-        Blue: '#DBEAFE',
-      },
-      Text: {
-        Primary: '#2D3748',
-        Secondary: '#4A5568',
-        Muted: '#718096',
-        Light: '#A0AEC0',
-      },
-      Glass: {
-        Background: 'rgba(255, 255, 255, 0.1)',
-        Surface: 'rgba(255, 255, 255, 0.3)',
-        Border: 'rgba(255, 255, 255, 0.2)',
-      },
-      Gradient: {
-        Primary: 'linear-gradient(135deg, #6071F1 0%, #4FD1C5 100%)',
-        Secondary: 'linear-gradient(135deg, #C6F6D5 0%, #FEEBC8 100%)',
-        Background: 'linear-gradient(180deg, #F9FAFB 0%, #E2E8F0 100%)',
-      },
+      Light: '#FDFBF8',
+      Light_hover: '#FBF9F4',
+      Light_active: '#F7F2E9',
+      Normal: '#E6D5B7',
+      Normal_hover: '#CFC0A5',
+      Normal_active: '#B8AA92',
+      Dark: '#ADA089',
+      Dark_hover: '#8A806E',
+      Dark_active: '#676052',
+      Darker: '#514B40',
     },
     Semantic: {
-      Info: '#3B82F6',
-      Success: '#10B981',
-      Warning: '#F59E0B',
-      Error: '#EF4444',
+      Success: {},
+      Warning: {},
+      Error: {},
+      Info: {},
     },
+    Neutral: {},
     Text: {
       Dark: '#000000',
       White: '#2B2B2F',
-      Disabled: {
-        Color: '#000000',
-        Opacity: '0.3',
-      },
+      Disabled: 'rgba(0, 0, 0, 0.3)',
     },
     Glass: {
-      Background: {
-        Color: '#FFFFFF',
-        Opacity: '0.1',
-      },
-      Surface: {
-        Color: '#FFFFFF',
-        Opacity: '0.3',
-      },
+      Background: 'rgba(255, 255, 255, 0.1)',
+      Surface: 'rgba(255, 255, 255, 0.3)',
     },
   },
   spacing: {
@@ -121,13 +83,7 @@ export const THEME = {
     32: '8rem',
   },
   typography: {
-    fontFamily: {
-      sans: ['Inter', 'system-ui', 'sans-serif'],
-      mono: ['JetBrains Mono', 'Consolas', 'monospace'],
-      serif: ['Playfair Display', 'serif'],
-      display: ['Playfair Display', 'serif'],
-      body: ['Inter', 'system-ui', 'sans-serif'],
-    },
+    fontFamily: [FONT_FAMILY.Pretendard, FONT_FAMILY.SFPro, FONT_FAMILY.Inter],
     fontSize: {
       xs: '0.75rem',
       sm: '0.875rem',
@@ -159,20 +115,6 @@ export const THEME = {
       loose: 2,
     },
   },
-  shadows: {
-    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-    base: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-    calyx: {
-      soft: '0 4px 20px rgba(96, 113, 241, 0.15)',
-      glow: '0 0 30px rgba(79, 209, 197, 0.3)',
-      glass: '0 8px 32px rgba(0, 0, 0, 0.1)',
-    },
-  },
   borderRadius: {
     none: '0',
     sm: '0.125rem',
@@ -194,3 +136,14 @@ export const THEME = {
 } as const;
 
 export type ThemeType = typeof THEME;
+
+import '@emotion/react';
+declare module '@emotion/react' {
+  export interface Theme {
+    colors: typeof THEME.colors;
+    spacing: typeof THEME.spacing;
+    typography: typeof THEME.typography;
+    borderRadius: typeof THEME.borderRadius;
+    transitions: typeof THEME.transitions;
+  }
+}
