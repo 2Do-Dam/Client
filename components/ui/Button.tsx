@@ -121,6 +121,11 @@ const StyledButton = styled.button<ButtonProps>`
       box-shadow: 0 0 0 0 rgba(96, 113, 241, 0);
     }
   }
+
+  /* pill 형태 강제 적용 */
+  &.pill {
+    border-radius: 9999px !important;
+  }
 `;
 
 export const Button: React.FC<ButtonProps> = ({
