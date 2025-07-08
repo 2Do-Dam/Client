@@ -19,7 +19,7 @@ const HeaderWrapper = styled.header`
   border-bottom: 1px solid rgba(255,255,255,0.3);
 `;
 
-// 헤더 컨텐츠 (가운데 정렬, 최대 1920px)
+
 const HeaderContent = styled.div`
   width: 100%;
   max-width: 1920px;
