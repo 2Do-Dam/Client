@@ -106,6 +106,7 @@ export const THEME = {
       bold: 700,
       extrabold: 800,
     },
+    /*lineheight fix*/
     lineHeight: {
       Display: '54px',
       Heading: '26px',
