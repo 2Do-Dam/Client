@@ -4,7 +4,7 @@ import React from 'react';
 import ClientProviders from './ClientProviders';
 import Header from '../components/layout/Header';
 import HeroSection from '@/components/layout/HeroSection';
-
+import ServiceSection from '@/components/layout/ServiceSection';
 
 export default function Home() {
   return (
@@ -12,6 +12,7 @@ export default function Home() {
       <main>
         <Header />
         <HeroSection />
+        <ServiceSection />
       </main>
     </ClientProviders>
   );
