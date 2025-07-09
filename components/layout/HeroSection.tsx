@@ -9,7 +9,7 @@ const HeroSectionWrapper = styled.section`
   position: relative;
   width: 100vw;
   min-height: 100vh;
-  background: ${THEME.colors.Primary.Light};
+  background: #ebece3;
   display: flex;
   flex-direction: column;
   align-items: center;
