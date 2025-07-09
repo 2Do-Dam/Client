@@ -19,6 +19,7 @@ const HeroSectionWrapper = styled.section`
   background-size: 80% 80%;
   background-position: center;
   background-repeat: no-repeat;
+  
 `;                      
 
 const HeroContent = styled.div`
