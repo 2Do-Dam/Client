@@ -5,6 +5,7 @@ import ClientProviders from './ClientProviders';
 import Header from '../components/layout/Header';
 import HeroSection from '@/components/layout/HeroSection';
 import ServiceSection from '@/components/layout/ServiceSection';
+import CreatorSection from '@/components/layout/CreatorSection';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Header />
         <HeroSection />
         <ServiceSection />
+        <CreatorSection />
       </main>
     </ClientProviders>
   );
