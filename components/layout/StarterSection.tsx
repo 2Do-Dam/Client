@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { THEME } from '../../styles/theme';
 import l from '../../public/ll.svg';
+import Button from '../ui/Button';
 
 // 섹션 전체 래퍼
 const SectionWrapper = styled.section`
@@ -60,54 +61,47 @@ const ButtonRow = styled.div`
   margin: 40px auto 0 auto;
 `;
 
-// 성장 수확하기 버튼 (Primary, glass 효과)
-const GrowButton = styled.button`
-  background: ${THEME.colors.Primary.Dark};
-  color: #f9f9fb;
-  border-radius: 500px;
-  border: 2px solid ${THEME.colors.Primary.Normal};
+// 성장 수확하기
+const GrowButton = styled(Button)`
+  background: ${THEME.colors.Primary.Normal};
+  color: #fff;
+  border-radius: 9999px;
   font-size: 18px;
   font-weight: 500;
-  font-family: 'Pretendard Variable', 'SF Pro', ${THEME.typography.fontFamily.join(', ')};
-  padding: 0 36px;
+  padding: 0 28px;
   height: 48px;
-  min-width: 188px;
+  min-width: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  backdrop-filter: blur(8px);
   transition: background 0.2s;
-  cursor: pointer;
   &:hover {
-    background: ${THEME.colors.Primary.Normal};
+    background: ${THEME.colors.Primary.Dark};
   }
 `;
 
-// 데모 보기 버튼 (Glass, border)
-const DemoButton = styled.button`
-  background: rgba(240,240,240,0.1);
+// 데모 
+const DemoButton = styled(Button)`
+  background: ${THEME.colors.Glass.Background};
   color: ${THEME.colors.Primary.Dark};
-  border-radius: 500px;
-  border: 2px solid ${THEME.colors.Primary.Dark};
+  border: 1.5px solid ${THEME.colors.Primary.Dark};
+  border-radius: 9999px;
   font-size: 18px;
   font-weight: 500;
-  font-family: 'Pretendard Variable', 'SF Pro', ${THEME.typography.fontFamily.join(', ')};
   padding: 0 36px;
   height: 48px;
-  min-width: 188px;
+  min-width: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   backdrop-filter: blur(8px);
   transition: background 0.2s;
-  cursor: pointer;
   &:hover {
-    background: rgba(240,240,240,0.3);
-    color: ${THEME.colors.Primary.Normal};
+    background: ${THEME.colors.Glass.Surface};
+    color: ${THEME.colors.Primary.Light};
   }
 `;
 
