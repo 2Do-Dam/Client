@@ -107,12 +107,11 @@ export const THEME = {
       extrabold: 800,
     },
     lineHeight: {
-      none: 1,
-      tight: 1.25,
-      snug: 1.375,
-      normal: 1.5,
-      relaxed: 1.625,
-      loose: 2,
+      Display: '54px',
+      Heading: '26px',
+      Body: '18px',
+      Caption: '14px',
+      Button: '20px',
     },
   },
   borderRadius: {
@@ -137,6 +136,7 @@ export const THEME = {
 
 export type ThemeType = typeof THEME;
 
+import Button from '@/components/ui/Button';
 import '@emotion/react';
 declare module '@emotion/react' {
   export interface Theme {
