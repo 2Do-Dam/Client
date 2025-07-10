@@ -130,6 +130,12 @@ const Signup = styled.a`
 const Google = styled.img``;
 
 export const LoginForm = () => {
+  const [icon, setIcon] = useState('closeEye');
+
+  const toggleIcon = () => {
+    setIcon(prev => (prev === 'closeEye' ? 'eye' : 'closeEye'));
+  };
+
   return (
     <Container>
       <WellocomeMessage>
@@ -145,11 +151,13 @@ export const LoginForm = () => {
             IconAlign="right"
           />
           <Input
-            Icon="closeEye"
             fullWidth={true}
+            InputType={icon == 'eye' ? 'password' : 'text'}
             variant="glass"
             placeholder="비밀번호"
             IconAlign="right"
+            Icon={icon}
+            onClick={toggleIcon}
           />
           <PasswordFind href="#">비밀번호를 잊으셨나요?</PasswordFind>
         </InputContainer>
