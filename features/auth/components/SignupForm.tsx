@@ -1,5 +1,4 @@
 'use client';
-import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import { Input } from '@/components/ui/Input';
@@ -123,18 +122,29 @@ const MovetoSignup = styled.span`
   line-height: ${THEME.typography.lineHeight.Caption};
   color: ${THEME.colors.Text.White};
 `;
-const Signup = styled.a`
+
+const link = styled.a`
   color: ${THEME.colors.Text.Disabled};
+  line-height: ${THEME.typography.lineHeight.Body};
 `;
+const Sevice = link;
+const PersonalInfo = link;
+const Signup = link;
 
 const Google = styled.img``;
 
-export const LoginForm = () => {
+const Checks = styled.span`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const SignupForm = () => {
   return (
     <Container>
       <WellocomeMessage>
-        <span>반가워요!</span>
-        <span>다시 돌아오셨네요!</span>
+        <span>만개하세요</span>
+        <span>Calyx가 함께 할게요</span>
       </WellocomeMessage>
       <FormContainer>
         <InputContainer>
@@ -145,17 +155,30 @@ export const LoginForm = () => {
             IconAlign="right"
           />
           <Input
-            Icon="closeEye"
             fullWidth={true}
             variant="glass"
             placeholder="비밀번호"
             IconAlign="right"
+            Icon="closeEye"
           />
-          <PasswordFind href="#">비밀번호를 잊으셨나요?</PasswordFind>
+          <Input
+            fullWidth={true}
+            variant="glass"
+            placeholder="비밀번호 확인"
+            IconAlign="right"
+            Icon="closeEye"
+          />
+
+          <Checks>
+            <Sevice href="#">서비스 이용약관</Sevice>
+            {'\u00A0및\u00A0'}
+            <PersonalInfo href="#">개인정보 수집 및 이용</PersonalInfo>에
+            동의합니다.
+          </Checks>
         </InputContainer>
         {/* 컴포넌트화 필요 Button(login)*/}
         <ButtonContainer>
-          <Button>로그인하기</Button>
+          <Button>회원가입 하기</Button>
         </ButtonContainer>
       </FormContainer>
       <OtherAuth>
@@ -166,10 +189,10 @@ export const LoginForm = () => {
       {/* 컴포넌트화 필요 Card */}
       <GoogleOauth>
         <Google src={`/Google.svg`} />
-        구글로 간편 로그인
+        구글로 간편 회원가입
       </GoogleOauth>
       <MovetoSignup>
-        계정이 없으신가요? <Signup href="#">회원가입 하기</Signup>
+        계정이 있으신가요? <Signup href="#">로그인 하기</Signup>
       </MovetoSignup>
     </Container>
   );
