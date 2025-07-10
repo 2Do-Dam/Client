@@ -18,7 +18,7 @@ const _Icon = styled.img``;
 
 const TextBox = styled.input<InputProps>`
   all: unset;
-  width: 100%;
+  width: 410px;
 
   padding-top: calc(${THEME.spacing[4]} + 1px);
   padding-bottom: calc(${THEME.spacing[4]} - 1px);
@@ -90,7 +90,7 @@ const StyledInput = styled.div<InputProps>`
         return `
           background: rgba(255,255,255,0.1);
           backdrop-filter: blur(10px);
-          border: 1px rgba(255, 255, 255, 0.30) solid;
+          border: 1px #4A9B8E solid;
           color: ${THEME.colors.Text.Dark};
         `;
     }
