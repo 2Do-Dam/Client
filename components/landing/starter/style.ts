@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { THEME } from '../../../styles/theme';
-import l from '../../../public/ll.svg';
+import starter_bg from '../../../public/background/starter_bg.svg';
 import { Button } from '../../ui/Button';
 
 // 섹션 전체 래퍼
@@ -14,7 +14,7 @@ export const SectionWrapper = styled.section`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background-image: url('${l.src}');
+  background-image: url('${starter_bg.src}');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

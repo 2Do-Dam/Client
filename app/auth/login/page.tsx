@@ -1,5 +1,5 @@
 'use client';
-import Header from '@/components/layout/Header';
+import Header from '@/components/layout/header/Header';
 import { LoginForm } from '@/features/auth/components/LoginForm';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import styled from '@emotion/styled';

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { THEME } from '../../../styles/theme';
-import z from '../../../public/zz.svg';
+import service_bg from '../../../public/background/service_bg.svg';
 import { keyframes } from '@emotion/react';
 
 // 서비스 섹션 전체 래퍼
@@ -14,7 +14,7 @@ export const SectionWrapper = styled.section`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background-image: url(${z.src});
+  background-image: url(${service_bg.src});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -140,3 +140,4 @@ export const CardDesc = styled.p`
   margin: 0;
   white-space: pre-line;
 `;
+

@@ -2,7 +2,7 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 import { THEME } from '../../../styles/theme';
-import s from '../../../public/ss.svg';
+import creator_bg from '../../../public/background/creator_bg.svg';
 
 
 
@@ -23,7 +23,7 @@ export const SectionWrapper = styled.section`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background-image: url(${s.src});
+  background-image: url(${creator_bg.src});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

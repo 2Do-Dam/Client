@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import React from 'react';
 import ClientProviders from './ClientProviders';
-import Header from '../components/layout/Header';
+import Header from '../components/layout/header/Header';
 import HeroSection from '@/components/landing/hero/HeroSection';
 import ServiceSection from '@/components/landing/service/ServiceSection';
 import CreatorSection from '@/components/landing/creator/CreatorSection';
