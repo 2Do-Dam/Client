@@ -3,11 +3,13 @@ import styled from '@emotion/styled';
 import { THEME } from '../../styles/theme';
 import l from '../../public/ll.svg';
 import Button from '../ui/Button';
+import { keyframes } from '@emotion/react';
+
 
 // 섹션 전체 래퍼
 const SectionWrapper = styled.section`
   width: 100vw;
-  min-height: 524px;
+  min-height: 100vh;
   background: #e3eded;
   display: flex;
   flex-direction: column;
@@ -104,6 +106,7 @@ const DemoButton = styled(Button)`
     color: ${THEME.colors.Primary.Light};
   }
 `;
+
 
 const StarterSection: React.FC = () => (
   <SectionWrapper>
