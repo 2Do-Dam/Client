@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { THEME } from '../../styles/theme';
 import l from '../../public/ll.svg';
 import Button from '../ui/Button';
-import { keyframes } from '@emotion/react';
 
 
 // 섹션 전체 래퍼

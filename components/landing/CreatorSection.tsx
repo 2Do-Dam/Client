@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { THEME } from '../../styles/theme';
 import s from '../../public/ss.svg';
 import flower from '../../public/Icons/flower.svg';
-import { color } from 'three/tsl';
 import { keyframes } from '@emotion/react';
 
 const ArrowSvg = () => (
