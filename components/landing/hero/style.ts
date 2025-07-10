@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { THEME } from '../../../styles/theme';
 import { Button } from '../../ui/Button';
-import union from '../../../public/Union.svg';
+import hero_bg from '../../../public/background/hero_bg.svg';
 import { keyframes } from '@emotion/react';
 
 export const bounceArrow = keyframes`
@@ -20,7 +20,7 @@ export const HeroSectionWrapper = styled.section`
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
-  background-image: url(${union.src});
+  background-image: url(${hero_bg.src});
   background-size: 80% 80%;
   background-position: center;
   background-repeat: no-repeat;
