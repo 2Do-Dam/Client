@@ -2,11 +2,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { THEME } from '../../styles/theme';
 import z from '../../public/zz.svg';
+import { keyframes } from '@emotion/react';
+
 
 // 서비스 섹션 전체 래퍼
 const SectionWrapper = styled.section`
   width: 100vw;
-  min-height: 740px;
+  min-height: 100vh;
   background: #d5e3e2;
   display: flex;
   flex-direction: column;
@@ -18,6 +20,18 @@ const SectionWrapper = styled.section`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+`;
+
+const ArrowSvg = () => (
+  <svg width="64" height="40" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 8V32M32 32L16 16M32 32L48 16" stroke={THEME.colors.Primary.Normal} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const bounceArrow = keyframes`
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(24px); }
+  100% { transform: translateX(-50%) translateY(0); }
 `;
 
 // 타이틀/서브타이틀 래퍼
@@ -48,6 +62,21 @@ const Subtitle = styled.p`
   line-height: 1.125;
   text-align: center;
   padding-bottom: 80px;
+`;
+
+const DownArrow = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 64px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  animation: ${bounceArrow} 1.8s infinite cubic-bezier(0.4,0,0.2,1);
 `;
 
 // 카드 리스트 래퍼
@@ -157,6 +186,9 @@ const ServiceSection: React.FC = () => (
         </Card>
       ))}
     </CardRow>
+    <DownArrow>
+      <ArrowSvg />
+    </DownArrow>
   </SectionWrapper>
 );
 
