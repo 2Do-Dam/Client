@@ -2,8 +2,15 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { THEME } from '../../styles/theme';
 import { Button } from '../ui/Button';
-import dynamic from 'next/dynamic';
 import union from '../../public/Union.svg';
+import { keyframes } from '@emotion/react';
+
+// 아래 화살표 애니메이션 keyframes
+const bounceArrow = keyframes`
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(24px); }
+  100% { transform: translateX(-50%) translateY(0); }
+`;
 
 const HeroSectionWrapper = styled.section`
   position: relative;
@@ -94,6 +101,8 @@ const DemoButton = styled(Button)`
   }
 `;
 
+
+
 const DownArrow = styled.div`
   position: absolute;
   left: 50%;
@@ -106,6 +115,7 @@ const DownArrow = styled.div`
   align-items: center;
   justify-content: center;
   opacity: 0.9;
+  animation: ${bounceArrow} 1.8s infinite cubic-bezier(0.4,0,0.2,1);
 `;
 
 const ArrowSvg = () => (
