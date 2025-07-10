@@ -1,9 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { THEME } from '../../styles/theme';
-import s from '../../public/ss.svg';
-import flower from '../../public/Icons/flower.svg';
-import { keyframes } from '@emotion/react';
+import { THEME } from '../../../styles/theme';
+import flower from '../../../public/Icons/flower.svg';
+import { SectionWrapper, TitleBlock, Title, Subtitle, CarouselViewport, CarouselTrack, CircleBadge, DownArrow, CardTitle, CardDesc } from './style';
 
 const ArrowSvg = () => (
   <svg width="64" height="40" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,97 +10,12 @@ const ArrowSvg = () => (
   </svg>
 );
 
-const bounceArrow = keyframes`
-  0% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(24px); }
-  100% { transform: translateX(-50%) translateY(0); }
-`;
-
-// 섹션 전체 래퍼
-const SectionWrapper = styled.section`
-  width: 100vw;
-  min-height: 100vh;
-  background: #ebece3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  background-image: url(${s.src});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-`;
-
-const DownArrow = styled.div`
-  position: absolute;
-  left: 50%;
-  bottom: 40px;
-  transform: translateX(-50%);
-  z-index: 2;
-  width: 64px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.9;
-  animation: ${bounceArrow} 1.8s infinite cubic-bezier(0.4,0,0.2,1);
-`;
-
-// 타이틀/서브타이틀 래퍼
-const TitleBlock = styled.div`
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 48px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Title = styled.h2`
-  font-family: 'Pretendard Variable', 'SF Pro', ${THEME.typography.fontFamily.join(', ')};
-  font-size: 48px;
-  font-weight: 700;
-  color: #1a3632;
-  line-height: 1.125;
-  margin-bottom: 12px;
-  text-align: center;
-`;
-
-const Subtitle = styled.p`
-  font-family: 'Pretendard Variable', 'SF Pro', ${THEME.typography.fontFamily.join(', ')};
-  font-size: 16px;
-  font-weight: 400;
-  color: #1a3632;
-  line-height: 1.125;
-  text-align: center;
-`;
-
-// 카드 리스트를 감싸는 뷰포트(오버플로우 숨김)
-const CarouselViewport = styled.div`
-  width: 100vw;
-  max-width: 1800px;
-  overflow: hidden;
-  margin: 0 auto;
-  position: relative;
-`;
-
-// 가로 슬라이드 트랙
-const CarouselTrack = styled.div<{translateX: number}>`
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-  transform: translateX(${({translateX}) => translateX}px);
-  will-change: transform;
-`;
-
 // Card 컴포넌트를 forwardRef로 변경
 const Card = React.forwardRef<HTMLDivElement, React.PropsWithChildren<{}>>((props, ref) => (
   <div ref={ref} {...props} />
 ));
 
-const StyledCard = styled(Card)`
+export const StyledCard = styled(Card)`
   background: rgba(230,213,183,0.2);
   border: 1.5px solid rgba(255,255,255,0.3);
   border-radius: 24px;
@@ -121,30 +35,6 @@ const StyledCard = styled(Card)`
   white-space: nowrap;
 `;
 
-const CardTitle = styled.h3`
-  font-family: 'Pretendard Variable', 'SF Pro', ${THEME.typography.fontFamily.join(', ')};
-  font-size: 24px;
-  font-weight: 600;
-  color: #2b2b2f;
-  line-height: 1.1;
-  margin-bottom: 8px;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
-const CardDesc = styled.p`
-  font-family: 'Pretendard Variable', 'SF Pro', ${THEME.typography.fontFamily.join(', ')};
-  font-size: 16px;
-  font-weight: 400;
-  color: #1a3632;
-  line-height: 1.125;
-  margin: 0;
-  text-align: left;
-`;
-
 // 카드 데이터들 넣는 부분
 const realCards = [
   { title: 'KINGOFHWAG', desc: 'Instagram · 23' },
@@ -161,26 +51,6 @@ const realCards = [
 const cardList = [...realCards, ...realCards, ...realCards, ...realCards];
 
 const AUTO_SCROLL_SPEED = 1.2; // px per frame
-
-// 동그란 사용자 후기 배지 (glass 효과 추가)
-const CircleBadge = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 135px;
-  height: 38px;
-  border-radius: 19px;
-  background: rgba(255,255,255,0.3);
-  color: ${THEME.colors.Primary.Dark};
-  font-family: 'Pretendard Variable', 'SF Pro', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  margin: 0 auto 16px auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  border: 1.5px solid rgba(255,255,255,0.4);
-  backdrop-filter: blur(8px);
-`;
 
 const CreatorSection: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);

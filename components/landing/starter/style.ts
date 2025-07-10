@@ -1,12 +1,10 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import { THEME } from '../../styles/theme';
-import l from '../../public/ll.svg';
-import Button from '../ui/Button';
-
+import { THEME } from '../../../styles/theme';
+import l from '../../../public/ll.svg';
+import { Button } from '../../ui/Button';
 
 // 섹션 전체 래퍼
-const SectionWrapper = styled.section`
+export const SectionWrapper = styled.section`
   width: 100vw;
   min-height: 100vh;
   background: #e3eded;
@@ -23,7 +21,7 @@ const SectionWrapper = styled.section`
 `;
 
 // 타이틀/서브타이틀 래퍼
-const TitleBlock = styled.div`
+export const TitleBlock = styled.div`
   width: 100%;
   max-width: 900px;
   margin: 0 auto 32px auto;
@@ -32,7 +30,7 @@ const TitleBlock = styled.div`
   align-items: center;
 `;
 
-const Title = styled.h2`
+export const Title = styled.h2`
   font-family: 'Pretendard Variable', 'SF Pro', ${THEME.typography.fontFamily.join(', ')};
   font-size: 48px;
   font-weight: 700;
@@ -42,7 +40,7 @@ const Title = styled.h2`
   text-align: center;
 `;
 
-const Subtitle = styled.p`
+export const Subtitle = styled.p`
   font-family: 'Pretendard Variable', 'SF Pro', ${THEME.typography.fontFamily.join(', ')};
   font-size: 16px;
   font-weight: 400;
@@ -52,7 +50,7 @@ const Subtitle = styled.p`
 `;
 
 // 버튼 행
-const ButtonRow = styled.div`
+export const ButtonRow = styled.div`
   width: 100%;
   max-width: 700px;
   display: flex;
@@ -63,7 +61,7 @@ const ButtonRow = styled.div`
 `;
 
 // 성장 수확하기
-const GrowButton = styled(Button)`
+export const GrowButton = styled(Button)`
   background: ${THEME.colors.Primary.Normal};
   color: #fff;
   border-radius: 9999px;
@@ -84,7 +82,7 @@ const GrowButton = styled(Button)`
 `;
 
 // 데모 
-const DemoButton = styled(Button)`
+export const DemoButton = styled(Button)`
   background: ${THEME.colors.Glass.Background};
   color: ${THEME.colors.Primary.Dark};
   border: 1.5px solid ${THEME.colors.Primary.Dark};
@@ -105,25 +103,3 @@ const DemoButton = styled(Button)`
     color: ${THEME.colors.Primary.Light};
   }
 `;
-
-
-const StarterSection: React.FC = () => (
-  <SectionWrapper>
-    <TitleBlock>
-      <Title>당신의 루틴, Calyx로 시작해 보세요</Title>
-      <Subtitle>Calyx는 여러분의 만개를 응원합니다.</Subtitle>
-    </TitleBlock>
-    <ButtonRow>
-      <GrowButton>
-        성장 수확하기
-        <span style={{ fontSize: 20, marginLeft: 8 }}>→</span>
-      </GrowButton>
-      <DemoButton>
-        <span style={{ fontSize: 20, marginRight: 8 }}>▶</span>
-        데모 보기
-      </DemoButton>
-    </ButtonRow>
-  </SectionWrapper>
-);
-
-export default StarterSection;

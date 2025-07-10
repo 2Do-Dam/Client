@@ -1,18 +1,16 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import { THEME } from '../../styles/theme';
-import { Button } from '../ui/Button';
-import union from '../../public/Union.svg';
+import { THEME } from '../../../styles/theme';
+import { Button } from '../../ui/Button';
+import union from '../../../public/Union.svg';
 import { keyframes } from '@emotion/react';
 
-// 아래 화살표 애니메이션 keyframes
-const bounceArrow = keyframes`
+export const bounceArrow = keyframes`
   0% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(24px); }
   100% { transform: translateX(-50%) translateY(0); }
 `;
 
-const HeroSectionWrapper = styled.section`
+export const HeroSectionWrapper = styled.section`
   position: relative;
   width: 100vw;
   min-height: 100vh;
@@ -29,7 +27,7 @@ const HeroSectionWrapper = styled.section`
   
 `;                      
 
-const HeroContent = styled.div`
+export const HeroContent = styled.div`
   position: relative;
   z-index: 1;
   width: 100%;
@@ -41,7 +39,7 @@ const HeroContent = styled.div`
   gap: 2.5rem;
 `;
 
-const HeroTitle = styled.h1`
+export const HeroTitle = styled.h1`
   font-family: 'Pretendard Variable', 'SF Pro', ${THEME.typography.fontFamily.join(', ')};
   font-size: 64px;
   font-weight: 700;
@@ -53,13 +51,13 @@ const HeroTitle = styled.h1`
   letter-spacing: -0.02em;
 `;
 
-const ButtonRow = styled.div`
+export const ButtonRow = styled.div`
   display: flex;
   gap: 1.2rem;
   margin-top: 8px;
 `;
 
-const GrowButton = styled(Button)`
+export const GrowButton = styled(Button)`
   background: ${THEME.colors.Primary.Normal};
   color: #fff;
   border-radius: 9999px;
@@ -79,7 +77,7 @@ const GrowButton = styled(Button)`
   }
 `;
 
-const DemoButton = styled(Button)`
+export const DemoButton = styled(Button)`
   background: ${THEME.colors.Glass.Background};
   color: ${THEME.colors.Primary.Dark};
   border: 1.5px solid ${THEME.colors.Primary.Dark};
@@ -103,7 +101,7 @@ const DemoButton = styled(Button)`
 
 
 
-const DownArrow = styled.div`
+export const DownArrow = styled.div`
   position: absolute;
   left: 50%;
   bottom: 40px;
@@ -117,35 +115,3 @@ const DownArrow = styled.div`
   opacity: 0.9;
   animation: ${bounceArrow} 1.8s infinite cubic-bezier(0.4,0,0.2,1);
 `;
-
-const ArrowSvg = () => (
-  <svg width="64" height="40" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M32 8V32M32 32L16 16M32 32L48 16" stroke={THEME.colors.Primary.Normal} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const HeroSection: React.FC = () => (
-  <HeroSectionWrapper>
-    <HeroContent>
-      <HeroTitle>
-        콘텐츠를 피우세요<br />
-        성장을 수확하세요
-      </HeroTitle>
-      <ButtonRow>
-        <GrowButton className="pill">
-          성장 수확하기
-          <span style={{ fontSize: 20, marginLeft: 4 }}>→</span>
-        </GrowButton>
-        <DemoButton className="pill">
-          <span style={{ fontSize: 20, marginRight: 4 }}>▶</span>
-          데모 보기
-        </DemoButton>
-      </ButtonRow>
-    </HeroContent>
-    <DownArrow>
-      <ArrowSvg />
-    </DownArrow>
-  </HeroSectionWrapper>
-);
-
-export default HeroSection;

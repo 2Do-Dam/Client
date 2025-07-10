@@ -4,10 +4,10 @@ import { useState } from 'react';
 import React from 'react';
 import ClientProviders from './ClientProviders';
 import Header from '../components/layout/Header';
-import HeroSection from '@/components/landing/HeroSection';
-import ServiceSection from '@/components/landing/ServiceSection';
-import CreatorSection from '@/components/landing/CreatorSection';
-import StarterSection from '@/components/landing/StarterSection';
+import HeroSection from '@/components/landing/hero/HeroSection';
+import ServiceSection from '@/components/landing/service/ServiceSection';
+import CreatorSection from '@/components/landing/creator/CreatorSection';
+import StarterSection from '@/components/landing/starter/StarterSection';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
