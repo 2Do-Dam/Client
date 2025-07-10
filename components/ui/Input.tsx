@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { THEME } from '../../styles/theme';
+import { useState } from 'react';
 
 interface InputProps {
   InputType?: string;
-  onClick?: () => void;
   variant?: 'primary' | 'secondary' | 'ghost' | 'glass';
   placeholder?: string;
   Icon?: string;
@@ -99,7 +99,6 @@ const StyledInput = styled.div<InputProps>`
 
 export const Input: React.FC<InputProps> = ({
   InputType = 'text',
-  onClick,
   variant = 'primary',
   placeholder = 'ADD SOME TEXT',
   Icon = '',
@@ -107,6 +106,14 @@ export const Input: React.FC<InputProps> = ({
   className,
   fullWidth = false,
 }) => {
+  const [icon, setIcon] = useState(Icon);
+
+  const toggleEye = () => {
+    setIcon(prev => (prev === 'eye' ? 'closeEye' : 'eye'));
+  };
+
+  const inputType = (InputType = icon === 'eye' ? 'password' : 'text');
+
   return (
     <StyledInput
       variant={variant}
@@ -114,8 +121,8 @@ export const Input: React.FC<InputProps> = ({
       fullWidth={fullWidth}
       IconAlign={IconAlign}
     >
-      <TextBox placeholder={placeholder} type={InputType} />
-      {Icon && <_Icon onClick={onClick} src={`/Icons/${Icon}.svg`} />}
+      <TextBox placeholder={placeholder} type={inputType} />
+      {Icon && <_Icon onClick={toggleEye} src={`/Icons/${icon}.svg`} />}
     </StyledInput>
   );
 };
