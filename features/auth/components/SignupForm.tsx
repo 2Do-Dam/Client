@@ -151,7 +151,7 @@ export const SignupForm = () => {
           <Input
             fullWidth={true}
             variant="glass"
-            placeholder="이메일또는 아이디"
+            placeholder="이메일 또는 아이디"
             IconAlign="right"
           />
           <Input
