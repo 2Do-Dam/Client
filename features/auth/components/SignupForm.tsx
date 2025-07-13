@@ -136,7 +136,7 @@ const Google = styled.img``;
 const Checks = styled.span`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 export const SignupForm = () => {
@@ -192,7 +192,7 @@ export const SignupForm = () => {
         구글로 간편 회원가입
       </GoogleOauth>
       <MovetoSignup>
-        계정이 있으신가요? <Signup href="#">로그인 하기</Signup>
+        계정이 있으신가요? <Signup href="/auth/login">로그인 하기</Signup>
       </MovetoSignup>
     </Container>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { THEME } from '../../../styles/theme';
 import { HeroSectionWrapper, HeroContent, HeroTitle, ButtonRow, GrowButton, DemoButton, DownArrow } from './style';
+import Link from 'next/link';
 
 
 
@@ -18,10 +19,12 @@ const HeroSection: React.FC = () => (
         성장을 수확하세요
       </HeroTitle>
       <ButtonRow>
-        <GrowButton className="pill">
-          성장 수확하기
-          <span style={{ fontSize: 20, marginLeft: 4 }}>→</span>
-        </GrowButton>
+        <Link href="/auth/login" style={{ textDecoration: 'none' }}>
+          <GrowButton className="pill">
+            성장 수확하기
+            <span style={{ fontSize: 20, marginLeft: 4 }}>→</span>
+          </GrowButton>
+        </Link>
         <DemoButton className="pill">
           <span style={{ fontSize: 20, marginRight: 4 }}>▶</span>
           데모 보기

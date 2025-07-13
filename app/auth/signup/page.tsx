@@ -3,7 +3,6 @@ import Header from '@/components/layout/header/Header';
 import { SignupForm } from '@/features/auth/components/SignupForm';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
 
 const Mian = styled.main``;
 
@@ -30,20 +29,11 @@ const Circle = styled.img`
   z-index: ${Z_INDEX.fixed};
 `;
 
-const mainFloatY = keyframes`
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-200px);
-  }
-`;
 
 const MainSvg = styled.img`
   position: absolute;
   left: 0;
   z-index: ${Z_INDEX.dropdown};
-  animation: ${mainFloatY} 2.5s ${THEME.transitions.base} infinite alternate;
 `;
 
 export default function Signup() {

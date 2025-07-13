@@ -169,7 +169,7 @@ export const LoginForm = () => {
         구글로 간편 로그인
       </GoogleOauth>
       <MovetoSignup>
-        계정이 없으신가요? <Signup href="#">회원가입 하기</Signup>
+        계정이 없으신가요? <Signup href="/auth/signup">회원가입 하기</Signup>
       </MovetoSignup>
     </Container>
   );
