@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '../../ui/Button';
 import Image from 'next/image';
+import Link from 'next/link';
 import { HeaderWrapper, HeaderContent, Logo, MenuWrapper, MenuItem } from './style';
 
 const Header: React.FC = () => {
@@ -15,7 +16,11 @@ const Header: React.FC = () => {
           <MenuItem href="#">대시보드</MenuItem>
           <MenuItem href="#">사용법</MenuItem>
           <MenuItem href="#">후기</MenuItem>
-          <Button variant="primary" size="md" className="pill">시작하기</Button>
+
+          <Link href="/auth/login">
+            <Button variant="primary" size="md" className="pill">시작하기</Button>
+          </Link>
+          
         </MenuWrapper>
       </HeaderContent>
     </HeaderWrapper>
