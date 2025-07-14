@@ -1,7 +1,10 @@
 'use client';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import styled from '@emotion/styled';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import { Input } from '@/components/ui/Input';
+import apiClient from '@/shared/api/client';
 
 const Container = styled.div`
   display: flex;
@@ -140,19 +143,59 @@ const Checks = styled.span`
 `;
 
 export const SignupForm = () => {
+  // 이메일, 비밀번호, 비밀번호 확인, 이름 상태 관리
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordCheck, setPasswordCheck] = useState('');
+  const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const router = useRouter(); // 라우터 사용
+
+  // 회원가입 폼 제출 핸들러
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    if (password !== passwordCheck) {
+      setError('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+    setLoading(true);
+    try {
+      await apiClient.register({ email, password, name });
+      // 회원가입 성공 시 로그인 페이지로 이동
+      router.push('/auth/login');
+    } catch (err: any) {
+      const detail = err?.response?.data?.detail;
+      if (Array.isArray(detail)) {
+        setError(detail.map((d: any) => d.msg).join(', '));
+      } else if (typeof detail === 'string') {
+        setError(detail);
+      } else {
+        setError('회원가입에 실패했습니다.');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Container>
       <WellocomeMessage>
-        <span>만개하세요</span>
+        <span>만나세요</span>
         <span>Calyx가 함께 할게요</span>
       </WellocomeMessage>
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <InputContainer>
           <Input
             fullWidth={true}
             variant="glass"
             placeholder="이메일 또는 아이디"
             IconAlign="right"
+            value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            type="email"
           />
           <Input
             fullWidth={true}
@@ -160,6 +203,9 @@ export const SignupForm = () => {
             placeholder="비밀번호"
             IconAlign="right"
             Icon="closeEye"
+            value={password}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            type="password"
           />
           <Input
             fullWidth={true}
@@ -167,18 +213,29 @@ export const SignupForm = () => {
             placeholder="비밀번호 확인"
             IconAlign="right"
             Icon="closeEye"
+            value={passwordCheck}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordCheck(e.target.value)}
+            type="password"
           />
-
+          {/* 이름 입력 추가 */}
+          <Input
+            fullWidth={true}
+            variant="glass"
+            placeholder="이름"
+            IconAlign="right"
+            value={name}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+          />
           <Checks>
             <Sevice href="#">서비스 이용약관</Sevice>
             {'\u00A0및\u00A0'}
-            <PersonalInfo href="#">개인정보 수집 및 이용</PersonalInfo>에
-            동의합니다.
+            <PersonalInfo href="#">개인정보 수집 및 이용</PersonalInfo>에 동의합니다.
           </Checks>
         </InputContainer>
-        {/* 컴포넌트화 필요 Button(login)*/}
+        {/* 에러 메시지 표시 */}
+        {error && <div style={{ color: 'red', marginBottom: 8 }}>{error}</div>}
         <ButtonContainer>
-          <Button>회원가입 하기</Button>
+          <Button type="submit" disabled={loading}>{loading ? '가입 중...' : '회원가입 하기'}</Button>
         </ButtonContainer>
       </FormContainer>
       <OtherAuth>
