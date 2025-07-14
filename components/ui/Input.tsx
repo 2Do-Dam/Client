@@ -121,16 +121,19 @@ export const Input: React.FC<InputProps> = ({
   onChange,
   type,
 }) => {
+  // eye/closeEye 아이콘 클릭 시 type 토글 (비밀번호 보이기/숨기기)
   const [icon, setIcon] = useState(Icon);
+  const [showPassword, setShowPassword] = useState(false);
 
   const toggleEye = () => {
     setIcon(prev => (prev === 'eye' ? 'closeEye' : 'eye'));
+    setShowPassword(prev => !prev);
   };
 
   // type 우선순위: 외부 type > eye 토글 > InputType
   let inputType = type || InputType;
-  if (Icon === 'eye') {
-    inputType = icon === 'eye' ? 'password' : 'text';
+  if (Icon === 'eye' || Icon === 'closeEye') {
+    inputType = showPassword ? 'text' : 'password';
   }
 
   return (
@@ -140,14 +143,17 @@ export const Input: React.FC<InputProps> = ({
       fullWidth={fullWidth}
       IconAlign={IconAlign}
     >
-      {/* value, onChange, type 모두 전달 */}
       <TextBox
         placeholder={placeholder}
         type={inputType}
         value={value}
         onChange={onChange}
       />
-      {Icon && <_Icon onClick={toggleEye} src={`/Icons/${icon}.svg`} />}
+      {(Icon === 'eye' || Icon === 'closeEye') && (
+        <_Icon onClick={toggleEye} src={`/Icons/${showPassword ? 'eye' : 'closeEye'}.svg`} style={{ cursor: 'pointer' }} />
+      )}
+      {/* 기존 아이콘 지원 */}
+      {Icon && Icon !== 'eye' && Icon !== 'closeEye' && <_Icon src={`/Icons/${icon}.svg`} />}
     </StyledInput>
   );
 };
