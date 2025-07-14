@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import { Input } from '@/components/ui/Input';
+import apiClient from '@/shared/api/client';
 
 const Container = styled.div`
   display: flex;
@@ -130,19 +131,51 @@ const Signup = styled.a`
 const Google = styled.img``;
 
 export const LoginForm = () => {
+  // 이메일, 비밀번호 상태 관리
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // 로그인 폼 제출 핸들러
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
+      await apiClient.login({ email, password });
+      // TODO: 로그인 성공 후 라우팅 처리 (예: 메인 페이지 이동)
+    } catch (err: any) {
+      // detail이 배열(객체)일 때 msg만 뽑아서 출력
+      const detail = err?.response?.data?.detail;
+      if (Array.isArray(detail)) {
+        setError(detail.map((d: any) => d.msg).join(', '));
+      } else if (typeof detail === 'string') {
+        setError(detail);
+      } else {
+        setError('로그인에 실패했습니다.');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Container>
       <WellocomeMessage>
         <span>반가워요!</span>
         <span>다시 돌아오셨네요!</span>
       </WellocomeMessage>
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <InputContainer>
           <Input
             fullWidth={true}
             variant="glass"
             placeholder="이메일 또는 아이디"
             IconAlign="right"
+            value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            type="email"
           />
           <Input
             Icon="closeEye"
@@ -150,12 +183,16 @@ export const LoginForm = () => {
             variant="glass"
             placeholder="비밀번호"
             IconAlign="right"
+            value={password}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            type="password"
           />
           <PasswordFind href="#">비밀번호를 잊으셨나요?</PasswordFind>
         </InputContainer>
-        {/* 컴포넌트화 필요 Button(login)*/}
+        {/* 에러 메시지 표시 */}
+        {typeof error === 'string' && <div style={{ color: 'red', marginBottom: 8 }}>{error}</div>}
         <ButtonContainer>
-          <Button>로그인하기</Button>
+          <Button type="submit" disabled={loading}>{loading ? '로그인 중...' : '로그인하기'}</Button>
         </ButtonContainer>
       </FormContainer>
       <OtherAuth>

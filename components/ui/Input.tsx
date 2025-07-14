@@ -12,6 +12,10 @@ interface InputProps {
   //readonly?: boolean;
   className?: string;
   fullWidth?: boolean;
+  // 추가: 제어 컴포넌트용 value, onChange, type
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
 }
 
 const _Icon = styled.img``;
@@ -28,6 +32,14 @@ const TextBox = styled.input<InputProps>`
 
   &:focus {
     outline: none;
+  }
+
+  
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: #111 !important;
+    transition: background-color 5000s ease-in-out 0s;
   }
 `;
 
@@ -105,6 +117,9 @@ export const Input: React.FC<InputProps> = ({
   IconAlign = '',
   className,
   fullWidth = false,
+  value,
+  onChange,
+  type,
 }) => {
   const [icon, setIcon] = useState(Icon);
 
@@ -112,7 +127,11 @@ export const Input: React.FC<InputProps> = ({
     setIcon(prev => (prev === 'eye' ? 'closeEye' : 'eye'));
   };
 
-  const inputType = (InputType = icon === 'eye' ? 'password' : 'text');
+  // type 우선순위: 외부 type > eye 토글 > InputType
+  let inputType = type || InputType;
+  if (Icon === 'eye') {
+    inputType = icon === 'eye' ? 'password' : 'text';
+  }
 
   return (
     <StyledInput
@@ -121,7 +140,13 @@ export const Input: React.FC<InputProps> = ({
       fullWidth={fullWidth}
       IconAlign={IconAlign}
     >
-      <TextBox placeholder={placeholder} type={inputType} />
+      {/* value, onChange, type 모두 전달 */}
+      <TextBox
+        placeholder={placeholder}
+        type={inputType}
+        value={value}
+        onChange={onChange}
+      />
       {Icon && <_Icon onClick={toggleEye} src={`/Icons/${icon}.svg`} />}
     </StyledInput>
   );
