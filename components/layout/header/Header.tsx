@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { THEME, Z_INDEX } from '../../../styles/theme';
-import { Button } from '../../ui/Button';
+import { THEME, Z_INDEX } from '@/styles/theme';
+import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
 
 // 헤더 전체 래퍼
 const HeaderWrapper = styled.header`
   width: 100%;
-  height: 80px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: sticky;
+  position: absolute;
   top: 0;
   z-index: ${Z_INDEX.sticky};
   background: ${THEME.colors.Glass.Background};
