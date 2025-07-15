@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { THEME, Z_INDEX } from '../../../styles/theme';
+import { Button } from '../../ui/Button';
+import Image from 'next/image';
 
 // 헤더 전체 래퍼
 const HeaderWrapper = styled.header`
@@ -8,14 +11,14 @@ const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  z-index: 1020;
-  background: rgba(250, 250, 250, 0.3); // 피그마 색상
-  border-bottom: 1px solid rgba(0,0,0,0.5);
+  z-index: ${Z_INDEX.sticky};
+  background: ${THEME.colors.Glass.Background};
   backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
 `;
+
 
 const HeaderContent = styled.div`
   width: 100%;
@@ -27,28 +30,53 @@ const HeaderContent = styled.div`
   padding: 0 64px;
 `;
 
-const Title = styled.div`
-  font-family: 'Pretendard Variable', sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: #2b2b2f;
-`;
-
-const IconWrapper = styled.div`
+// 로고
+const Logo = styled.div`
   display: flex;
   align-items: center;
-  gap: 24px;
+  font-family: ${THEME.typography.fontFamily[0]};
+  font-size: 2rem;
+  font-weight: 700;
+  color: ${THEME.colors.Primary.Normal};
+  letter-spacing: 0.05em;
+  cursor: pointer;
+`;
+
+// 메뉴 래퍼
+const MenuWrapper = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+`;
+
+// 메뉴 텍스트
+const MenuItem = styled.a`
+  font-family: ${THEME.typography.fontFamily[0]};
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${THEME.colors.Text.White};
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  &:hover {
+    color: ${THEME.colors.Primary.Normal};
+  }
 `;
 
 const Header: React.FC = () => {
   return (
     <HeaderWrapper>
       <HeaderContent>
-        <Title>DashBoard</Title>
-        <IconWrapper>
-          {/* 알림 아이콘 자리 (임시 이모지) */}
-          <span role="img" aria-label="notifications">🔔</span>
-        </IconWrapper>
+        <Logo>
+          <Image src="/logo.svg" alt="Calyx Logo" width={42} height={45} priority />
+        </Logo>
+        <MenuWrapper>
+          <MenuItem href="#">기능</MenuItem>
+          <MenuItem href="#">대시보드</MenuItem>
+          <MenuItem href="#">사용법</MenuItem>
+          <MenuItem href="#">후기</MenuItem>
+          <Button variant="primary" size="md" className="pill">시작하기</Button>
+        </MenuWrapper>
       </HeaderContent>
     </HeaderWrapper>
   );

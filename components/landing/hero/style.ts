@@ -24,7 +24,6 @@ export const HeroSectionWrapper = styled.section`
   background-size: 80% 80%;
   background-position: center;
   background-repeat: no-repeat;
-  
 `;                      
 
 export const HeroContent = styled.div`
