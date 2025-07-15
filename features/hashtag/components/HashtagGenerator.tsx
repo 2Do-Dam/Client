@@ -3,11 +3,11 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  background: rgba(250, 250, 250, 0.3);
+  background: #fff;
   border: 1px solid #e6e6e9;
   border-radius: 32px;
-  width: 688px;
-  min-height: 190px;
+  width: 620px;
+  min-height: 70px;
   padding: 32px 24px;
   box-sizing: border-box;
 `;

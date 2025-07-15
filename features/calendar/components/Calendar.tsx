@@ -7,9 +7,10 @@ import type { CalendarType } from 'react-calendar';
 
 const GlassCalendar = styled.div`
   background: #fff;
-  border-radius: 48px;
+  border: 1px solid #e6e6e9;
+  border-radius: 32px;
   padding: 32px 24px 24px 24px;
-  width: 342px;
+  width: 300px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.04);
 
   .react-calendar {

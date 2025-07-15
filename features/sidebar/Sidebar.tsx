@@ -134,7 +134,7 @@ interface LayoutProps {
   children?: ReactNode;
 }
 
-// SVG 색상 변경용 필터 (primary 색상에 맞춤)
+
 const primaryFilter =
   'invert(54%) sepia(16%) saturate(1012%) hue-rotate(120deg) brightness(90%) contrast(90%)';
 
