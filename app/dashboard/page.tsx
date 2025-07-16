@@ -9,6 +9,7 @@ import Report from '@/features/report/Report';
 import Reco from '@/features/reco/Reco';
 import { useQuery } from '@tanstack/react-query';
 import { create } from 'zustand';
+import Todo from '@/features/todo/Todo';
 
 // zustand user store
 interface User {
@@ -125,13 +126,7 @@ export default function Dashboard() {
             </Box>
             <Box>
               <SectionTitle>다가오는 일정</SectionTitle>
-              {/* 임시 일정 리스트 */}
-              <div>01/27</div>
-              <ul>
-                <li>9:00 am - 영상 편집하기</li>
-                <li>11:00 am - 앙 기모찌 하기</li>
-              </ul>
-              <button style={{marginTop: '16px'}}>추가하기 +</button>
+              <Todo />
             </Box>
           </div>
         </MainGrid>

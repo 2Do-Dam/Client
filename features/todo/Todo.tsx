@@ -105,13 +105,16 @@ const AddIcon = styled.img`
 `;
 
 export default function UpcomingSchedule() {
+  const today = new Date();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
   return (
     <GlassFrame>
       <TopRow>
         <Title>다가오는 일정</Title>
         <ViewAll>전체보기</ViewAll>
       </TopRow>
-      <DateLabel>오늘 - 1월 27일</DateLabel>
+      <DateLabel>오늘 - {month}월 {day}일</DateLabel>
       <ScheduleList>
         <ScheduleCard>
           <TimeRow>
