@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // 헤더 전체 래퍼
 const HeaderWrapper = styled.header`
@@ -75,7 +76,9 @@ const Header: React.FC = () => {
           <MenuItem href="#">대시보드</MenuItem>
           <MenuItem href="#">사용법</MenuItem>
           <MenuItem href="#">후기</MenuItem>
-          <Button variant="primary" size="md" className="pill">시작하기</Button>
+          <Link href="/auth/login">
+            <Button variant="primary" size="md" className="pill">시작하기</Button>
+          </Link>
         </MenuWrapper>
       </HeaderContent>
     </HeaderWrapper>

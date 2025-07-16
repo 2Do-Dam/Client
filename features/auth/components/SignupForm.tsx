@@ -183,7 +183,7 @@ export const SignupForm = () => {
   return (
     <Container>
       <WellocomeMessage>
-        <span>만나세요</span>
+        <span>만개하세요</span>
         <span>Calyx가 함께 할게요</span>
       </WellocomeMessage>
       <FormContainer onSubmit={handleSubmit}>
