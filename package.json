@@ -19,7 +19,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@tanstack/react-query": "^5.81.2",
+    "@tanstack/react-query": "^5.84.2",
     "axios": "^1.10.0",
     "emotion-css": "^1.0.5",
     "next": "15.2.4",
