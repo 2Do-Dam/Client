@@ -127,3 +127,20 @@ export interface FeedbackResponse {
   created_at: string; // ISO 8601
   status: string;
 }
+
+export interface SendEmailCodeRequest {
+  email: string;
+}
+
+export interface SendEmailCodeResponse {
+  message: string;
+}
+
+export interface VerifyEmailCodeRequest {
+  email: string;
+  code: string;
+}
+
+export interface VerifyEmailCodeResponse {
+  message: string;
+}

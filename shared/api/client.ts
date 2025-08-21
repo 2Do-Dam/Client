@@ -18,6 +18,10 @@ import {
   TitleAnalyzeResponse,
   FeedbackCreateRequest,
   FeedbackResponse,
+  SendEmailCodeRequest,
+  SendEmailCodeResponse,
+  VerifyEmailCodeRequest,
+  VerifyEmailCodeResponse,
 } from '../types/api.types';
 
 const TOKEN_KEY = 'access_token';
@@ -149,6 +153,18 @@ class ApiClient {
   // 피드백
   async createFeedback(data: FeedbackCreateRequest): Promise<FeedbackResponse> {
     const res = await this.client.post<FeedbackResponse>(API_ENDPOINTS.FEEDBACK.BASE, data);
+    return res.data;
+  }
+
+  // 이메일 인증 코드 발송
+  async sendEmailCode(data: SendEmailCodeRequest): Promise<SendEmailCodeResponse> {
+    const res = await this.client.post<SendEmailCodeResponse>(API_ENDPOINTS.USERS.SEND_EMAIL_CODE, data);
+    return res.data;
+  }
+
+  // 이메일 인증 코드 검증
+  async verifyEmailCode(data: VerifyEmailCodeRequest): Promise<VerifyEmailCodeResponse> {
+    const res = await this.client.post<VerifyEmailCodeResponse>(API_ENDPOINTS.USERS.VERIFY_EMAIL_CODE, data);
     return res.data;
   }
 }

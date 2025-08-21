@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import { Input } from '@/components/ui/Input';
 import apiClient from '@/shared/api/client';
+import { useRouter } from 'next/navigation';
 
 const Container = styled.div`
   display: flex;
@@ -136,6 +137,7 @@ export const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   // 로그인 폼 제출 핸들러
   const handleSubmit = async (e: React.FormEvent) => {
@@ -145,6 +147,7 @@ export const LoginForm = () => {
     try {
       await apiClient.login({ email, password });
       // TODO: 로그인 성공 후 라우팅 처리 (예: 메인 페이지 이동)
+      router.push('/dashboard');
     } catch (err: any) {
       // detail이 배열(객체)일 때 msg만 뽑아서 출력
       const detail = err?.response?.data?.detail;

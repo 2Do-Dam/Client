@@ -1,6 +1,6 @@
 export const API_ENDPOINTS = {
   AUTH: {
-    REGISTER: '/auth/register',
+    REGISTER: '/api/users/register',
     LOGIN: '/auth/login',
     GOOGLE: '/auth/google',
     LOGOUT: '/auth/logout',
@@ -8,6 +8,8 @@ export const API_ENDPOINTS = {
   USERS: {
     BASE: '/api/users',
     ROLES: '/api/users/roles',
+    SEND_EMAIL_CODE: '/api/users/send-email-code',
+    VERIFY_EMAIL_CODE: '/api/users/verify-email-code',
   },
   CONTENTS: {
     BASE: '/api/contents',

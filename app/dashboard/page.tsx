@@ -10,6 +10,7 @@ import Reco from '@/features/reco/Reco';
 import { useQuery } from '@tanstack/react-query';
 import { create } from 'zustand';
 import Todo from '@/features/todo/Todo';
+import apiClient from '@/shared/api/client';
 
 // zustand user store
 interface User {
@@ -21,7 +22,7 @@ interface User {
 }
 interface UserState {
   user: User | null;
-  setUser: (user: User) => void;
+  setUser: (user: User | null) => void;
 }
 export const useUserStore = create<UserState>((set) => ({
   user: null,
@@ -30,14 +31,12 @@ export const useUserStore = create<UserState>((set) => ({
 
 // React Query fetcher
 async function fetchMe() {
+  if (typeof window === 'undefined') return null;
   const token = localStorage.getItem('access_token');
-  const res = await fetch('/api/users/me', {
-    headers: {
-      'Authorization': `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error('Failed to fetch user');
-  return res.json();
+  if (!token) return null;
+  const users = await apiClient.getUsers();
+  // getUsers는 배열을 반환하므로, 첫 번째 유저를 반환 (임시)
+  return users[0];
 }
 
 const DashboardWrapper = styled.div`
@@ -83,9 +82,11 @@ const SectionTitle = styled.h2`
 
 export default function Dashboard() {
   const { user, setUser } = useUserStore();
-  const { data, isLoading } = useQuery<User>({
+  const isClient = typeof window !== 'undefined';
+  const { data, isLoading } = useQuery<User | null>({
     queryKey: ['me'],
     queryFn: fetchMe,
+    enabled: isClient,
     retry: false,
   });
   useEffect(() => {

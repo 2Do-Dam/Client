@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import { Input } from '@/components/ui/Input';
 import apiClient from '@/shared/api/client';
+import axios from 'axios'; // axios 추가
 
 const Container = styled.div`
   display: flex;
@@ -163,9 +164,14 @@ export const SignupForm = () => {
     }
     setLoading(true);
     try {
+      // 1. 회원가입
       await apiClient.register({ email, password, name });
-      // 회원가입 성공 시 로그인 페이지로 이동
-      router.push('/auth/login');
+      
+      // 2. 이메일 인증 코드 발송
+      await apiClient.sendEmailCode({email: email});
+      
+      // 3. 이메일 인증 페이지로 이동 (이메일 파라미터 포함)
+      router.push(`/auth/verify?email=${encodeURIComponent(email)}`);
     } catch (err: any) {
       const detail = err?.response?.data?.detail;
       if (Array.isArray(detail)) {
@@ -191,7 +197,7 @@ export const SignupForm = () => {
           <Input
             fullWidth={true}
             variant="glass"
-            placeholder="이메일 또는 아이디"
+            placeholder="이메일"
             IconAlign="right"
             value={email}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
@@ -217,7 +223,6 @@ export const SignupForm = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordCheck(e.target.value)}
             type="password"
           />
-          {/* 이름 입력 추가 */}
           <Input
             fullWidth={true}
             variant="glass"
