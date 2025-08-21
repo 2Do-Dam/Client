@@ -7,6 +7,7 @@ export const API_ENDPOINTS = {
   },
   USERS: {
     BASE: '/api/users',
+    ME: '/api/users/me',
     ROLES: '/api/users/roles',
     SEND_EMAIL_CODE: '/api/users/send-email-code',
     VERIFY_EMAIL_CODE: '/api/users/verify-email-code',

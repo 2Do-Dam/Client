@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Calendar from '@/features/calendar/components/Calendar';
 import Graph from '@/features/graph/Graph';
@@ -13,13 +13,8 @@ import Todo from '@/features/todo/Todo';
 import apiClient from '@/shared/api/client';
 
 // zustand user store
-interface User {
-  id: string;
-  email: string;
-  name: string;
-  role: string;
-  created_at: string;
-}
+import { User } from '@/shared/types/api.types';
+
 interface UserState {
   user: User | null;
   setUser: (user: User | null) => void;
@@ -36,7 +31,7 @@ async function fetchMe() {
   if (!token) return null;
   const users = await apiClient.getUsers();
   // getUsers는 배열을 반환하므로, 첫 번째 유저를 반환 (임시)
-  return users[0];
+  return users;
 }
 
 const DashboardWrapper = styled.div`
@@ -81,23 +76,31 @@ const SectionTitle = styled.h2`
 `;
 
 export default function Dashboard() {
-  const { user, setUser } = useUserStore();
-  const isClient = typeof window !== 'undefined';
-  const { data, isLoading } = useQuery<User | null>({
-    queryKey: ['me'],
-    queryFn: fetchMe,
-    enabled: isClient,
-    retry: false,
-  });
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchUser = async () => {
+    try {
+      const user = await apiClient.getUsers();
+      setUser(user);
+      setIsLoading(false);
+      return user;
+    } catch (error) {
+      console.error('사용자 정보를 가져오는데 실패했습니다:', error);
+      setIsLoading(false);
+      return null;
+    }
+  }
+
   useEffect(() => {
-    if (data) setUser(data);
-  }, [data, setUser]);
+    fetchUser();
+  }, []);
 
   return (
     <SidebarHeaderLayout>
       <DashboardWrapper>
         <Greeting>
-          👋 어서오세요! {isLoading ? '...' : user?.name || '게스트'}님!
+          👋 어서오세요! {isLoading ? '...' : (user?.name || '게스트')}님!
         </Greeting>
         <MainGrid>
           {/* 좌측 컬럼 */}
