@@ -91,8 +91,8 @@ class ApiClient {
   }
 
   // 사용자
-  async getUsers(): Promise<UserListItem[]> {
-    const res = await this.client.get<UserListItem[]>(API_ENDPOINTS.USERS.BASE);
+  async getUsers(): Promise<UserListItem> {
+    const res = await this.client.get<UserListItem>(API_ENDPOINTS.USERS.BASE);
     return res.data;
   }
 

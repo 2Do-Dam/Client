@@ -25,14 +25,16 @@ export interface User {
   id: string; // UUID
   email: string;
   name: string;
+  nickname: string;
   role: string;
+  profile_image: string | null;
   created_at: string; // ISO 8601
+  is_deleted: boolean;
 }
 
 // 사용자 관리
 export interface UserListItem extends User {
-  profile_image?: string;
-  is_deleted: boolean;
+  // UserListItem은 User와 동일하므로 별도 정의 불필요
 }
 
 // 콘텐츠 관리
