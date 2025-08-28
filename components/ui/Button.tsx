@@ -19,14 +19,14 @@ const StyledButton = styled.button<ButtonProps>`
   gap: ${THEME.spacing[2]};
   border: none;
   border-radius: ${THEME.borderRadius['2xl']};
-  font-family: ${THEME.typography.fontFamily.body.join(', ')};
+  font-family: ${THEME.typography.fontFamily.join(', ')};
   font-weight: ${THEME.typography.fontWeight.medium};
   cursor: pointer;
   transition: all ${THEME.transitions.smooth};
   position: relative;
   overflow: hidden;
 
-  /* Size variants */
+  /* 사이즈 variant */
   ${({ size = 'md' }) => {
     switch (size) {
       case 'sm':
@@ -50,72 +50,55 @@ const StyledButton = styled.button<ButtonProps>`
     }
   }}
 
-  /* Width */
+  /* fullWidth */
   ${({ fullWidth }) => fullWidth && 'width: 100%;'}
 
-  /* Variants */
+  /* variant별 스타일 */
   ${({ variant = 'primary' }) => {
     switch (variant) {
       case 'primary':
         return `
-          background: ${THEME.colors.Calyx.Gradient.Primary};
+          background: ${THEME.colors.Primary.Normal};
           color: white;
-          box-shadow: ${THEME.shadows.calyx.soft};
-          
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
           &:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: ${THEME.shadows.calyx.glow};
-          }
-          
-          &:active:not(:disabled) {
-            transform: translateY(0);
+            background: ${THEME.colors.Primary.Dark};
           }
         `;
       case 'secondary':
         return `
-          background: ${THEME.colors.Calyx.Gradient.Secondary};
-          color: ${THEME.colors.Calyx.Text.Primary};
-          box-shadow: ${THEME.shadows.calyx.soft};
-          
+          background: ${THEME.colors.Secondary.Normal};
+          color: ${THEME.colors.Text.Dark};
+          box-shadow: 0 1px 4px rgba(0,0,0,0.06);
           &:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: ${THEME.shadows.calyx.glow};
-          }
-          
-          &:active:not(:disabled) {
-            transform: translateY(0);
+            background: ${THEME.colors.Secondary.Dark};
           }
         `;
       case 'ghost':
         return `
           background: transparent;
-          color: ${THEME.colors.Calyx.Text.Primary};
-          border: 2px solid ${THEME.colors.Calyx.Text.Light};
-          
+          color: ${THEME.colors.Primary.Normal};
+          border: 2px solid ${THEME.colors.Primary.Light};
           &:hover:not(:disabled) {
-            background: ${THEME.colors.Calyx.Accent.Purple};
-            border-color: ${THEME.colors.Calyx.Primary};
-            color: ${THEME.colors.Calyx.Primary};
+            background: ${THEME.colors.Primary.Light};
+            color: ${THEME.colors.Primary.Dark};
           }
         `;
       case 'glass':
         return `
-          background: ${THEME.colors.Calyx.Glass.Surface};
+          background: rgba(255,255,255,0.3);
           backdrop-filter: blur(10px);
-          border: 1px solid ${THEME.colors.Calyx.Glass.Border};
-          color: ${THEME.colors.Calyx.Text.Primary};
-          box-shadow: ${THEME.shadows.calyx.glass};
-          
+          border: 1px solid rgba(255,255,255,0.3);
+          color: ${THEME.colors.Text.Dark};
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
           &:hover:not(:disabled) {
-            background: ${THEME.colors.Calyx.Glass.Background};
-            transform: translateY(-1px);
-            box-shadow: ${THEME.shadows.calyx.soft};
+            background: rgba(255,255,255,0.1);
           }
         `;
     }
   }}
 
-  /* Disabled state */
+  /* 비활성화 상태 */
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -137,6 +120,11 @@ const StyledButton = styled.button<ButtonProps>`
     100% {
       box-shadow: 0 0 0 0 rgba(96, 113, 241, 0);
     }
+  }
+
+  /* pill 형태 강제 적용 */
+  &.pill {
+    border-radius: 9999px !important;
   }
 `;
 

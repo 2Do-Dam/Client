@@ -14,57 +14,54 @@ export function GlobalStylesProvider() {
     
     // 라이트 모드 CSS 변수
     if (mode === 'light') {
-      root.style.setProperty('--color-primary', THEME.colors.Calyx.Primary);
-      root.style.setProperty('--color-primary-hover', THEME.colors.Calyx.PrimaryHover);
-      root.style.setProperty('--color-secondary', THEME.colors.Calyx.Secondary);
-      root.style.setProperty('--color-secondary-hover', THEME.colors.Calyx.SecondaryHover);
-      root.style.setProperty('--color-background', THEME.colors.Calyx.Background);
-      root.style.setProperty('--color-background-alt', THEME.colors.Calyx.BackgroundAlt);
-      root.style.setProperty('--color-text-primary', THEME.colors.Calyx.Text.Primary);
-      root.style.setProperty('--color-text-secondary', THEME.colors.Calyx.Text.Secondary);
-      root.style.setProperty('--color-text-muted', THEME.colors.Calyx.Text.Muted);
-      root.style.setProperty('--color-text-light', THEME.colors.Calyx.Text.Light);
-      root.style.setProperty('--color-accent-green', THEME.colors.Calyx.Accent.Green);
-      root.style.setProperty('--color-accent-peach', THEME.colors.Calyx.Accent.Peach);
-      root.style.setProperty('--color-accent-purple', THEME.colors.Calyx.Accent.Purple);
-      root.style.setProperty('--color-accent-blue', THEME.colors.Calyx.Accent.Blue);
-      root.style.setProperty('--color-glass-background', THEME.colors.Calyx.Glass.Background);
-      root.style.setProperty('--color-glass-surface', THEME.colors.Calyx.Glass.Surface);
-      root.style.setProperty('--color-glass-border', THEME.colors.Calyx.Glass.Border);
-      root.style.setProperty('--shadow-soft', THEME.shadows.calyx.soft);
-      root.style.setProperty('--shadow-glow', THEME.shadows.calyx.glow);
-      root.style.setProperty('--shadow-glass', THEME.shadows.calyx.glass);
+      root.style.setProperty('--color-primary', THEME.colors.Primary.Normal);
+      root.style.setProperty('--color-primary-hover', THEME.colors.Primary.Dark_hover);
+      root.style.setProperty('--color-secondary', THEME.colors.Secondary.Normal);
+      root.style.setProperty('--color-secondary-hover', THEME.colors.Secondary.Dark_hover);
+      root.style.setProperty('--color-background', '#fff');
+      root.style.setProperty('--color-background-alt', THEME.colors.Secondary.Light);
+      root.style.setProperty('--color-text-primary', THEME.colors.Text.White);
+      root.style.setProperty('--color-text-secondary', THEME.colors.Text.Dark);
+      root.style.setProperty('--color-text-muted', THEME.colors.Text.Disabled);
+      root.style.setProperty('--color-text-light', THEME.colors.Text.White);
+      root.style.setProperty('--color-accent-green', THEME.colors.Primary.Normal);
+      root.style.setProperty('--color-accent-peach', THEME.colors.Secondary.Normal);
+      root.style.setProperty('--color-accent-purple', THEME.colors.Primary.Dark);
+      root.style.setProperty('--color-accent-blue', THEME.colors.Primary.Light);
+      root.style.setProperty('--color-glass-background', THEME.colors.Glass.Background);
+      root.style.setProperty('--color-glass-surface', THEME.colors.Glass.Surface);
+      root.style.setProperty('--color-glass-border', 'rgba(255,255,255,0.3)');
+      root.style.setProperty('--shadow-soft', '0 2px 8px rgba(0,0,0,0.08)');
+      root.style.setProperty('--shadow-glow', '0 0 30px rgba(74,155,142,0.2)');
+      root.style.setProperty('--shadow-glass', '0 8px 32px rgba(0,0,0,0.08)');
     } else {
       // 다크 모드 CSS 변수 (다크 테마 색상으로 조정)
-      root.style.setProperty('--color-primary', '#7C3AED');
-      root.style.setProperty('--color-primary-hover', '#8B5CF6');
-      root.style.setProperty('--color-secondary', '#06B6D4');
-      root.style.setProperty('--color-secondary-hover', '#0891B2');
-      root.style.setProperty('--color-background', '#0F172A');
-      root.style.setProperty('--color-background-alt', '#1E293B');
-      root.style.setProperty('--color-text-primary', '#F1F5F9');
-      root.style.setProperty('--color-text-secondary', '#CBD5E1');
-      root.style.setProperty('--color-text-muted', '#94A3B8');
-      root.style.setProperty('--color-text-light', '#64748B');
-      root.style.setProperty('--color-accent-green', '#065F46');
-      root.style.setProperty('--color-accent-peach', '#92400E');
-      root.style.setProperty('--color-accent-purple', '#5B21B6');
-      root.style.setProperty('--color-accent-blue', '#1E40AF');
-      root.style.setProperty('--color-glass-background', 'rgba(15, 23, 42, 0.8)');
-      root.style.setProperty('--color-glass-surface', 'rgba(30, 41, 59, 0.6)');
-      root.style.setProperty('--color-glass-border', 'rgba(148, 163, 184, 0.2)');
-      root.style.setProperty('--shadow-soft', '0 4px 20px rgba(124, 58, 237, 0.3)');
-      root.style.setProperty('--shadow-glow', '0 0 30px rgba(6, 182, 212, 0.4)');
-      root.style.setProperty('--shadow-glass', '0 8px 32px rgba(0, 0, 0, 0.3)');
+      root.style.setProperty('--color-primary', THEME.colors.Primary.Dark);
+      root.style.setProperty('--color-primary-hover', THEME.colors.Primary.Dark_hover);
+      root.style.setProperty('--color-secondary', THEME.colors.Secondary.Dark);
+      root.style.setProperty('--color-secondary-hover', THEME.colors.Secondary.Dark_hover);
+      root.style.setProperty('--color-background', '#18181b');
+      root.style.setProperty('--color-background-alt', THEME.colors.Secondary.Darker);
+      root.style.setProperty('--color-text-primary', THEME.colors.Text.White);
+      root.style.setProperty('--color-text-secondary', THEME.colors.Text.Dark);
+      root.style.setProperty('--color-text-muted', THEME.colors.Text.Disabled);
+      root.style.setProperty('--color-text-light', THEME.colors.Text.White);
+      root.style.setProperty('--color-accent-green', THEME.colors.Primary.Normal);
+      root.style.setProperty('--color-accent-peach', THEME.colors.Secondary.Normal);
+      root.style.setProperty('--color-accent-purple', THEME.colors.Primary.Dark);
+      root.style.setProperty('--color-accent-blue', THEME.colors.Primary.Light);
+      root.style.setProperty('--color-glass-background', THEME.colors.Glass.Background);
+      root.style.setProperty('--color-glass-surface', THEME.colors.Glass.Surface);
+      root.style.setProperty('--color-glass-border', 'rgba(255,255,255,0.1)');
+      root.style.setProperty('--shadow-soft', '0 2px 8px rgba(0,0,0,0.16)');
+      root.style.setProperty('--shadow-glow', '0 0 30px rgba(74,155,142,0.3)');
+      root.style.setProperty('--shadow-glass', '0 8px 32px rgba(0,0,0,0.16)');
     }
 
-    // 공통 CSS 변수
-    root.style.setProperty('--font-family-sans', THEME.typography.fontFamily.sans.join(', '));
-    root.style.setProperty('--font-family-serif', THEME.typography.fontFamily.serif.join(', '));
-    root.style.setProperty('--font-family-mono', THEME.typography.fontFamily.mono.join(', '));
-    root.style.setProperty('--font-family-display', THEME.typography.fontFamily.display.join(', '));
-    root.style.setProperty('--font-family-body', THEME.typography.fontFamily.body.join(', '));
-    
+    // 공통 CSS 변수 (폰트 패밀리 구조에 맞게 수정)
+    root.style.setProperty('--font-family-sans', THEME.typography.fontFamily.join(', '));
+    // serif, mono, display, body 등은 theme에 없으므로 제외
+
     // 스페이싱 변수
     Object.entries(THEME.spacing).forEach(([key, value]) => {
       root.style.setProperty(`--spacing-${key}`, value);
@@ -85,12 +82,8 @@ export function GlobalStylesProvider() {
       root.style.setProperty(`--line-height-${key}`, value.toString());
     });
 
-    // 그림자 변수
-    Object.entries(THEME.shadows).forEach(([key, value]) => {
-      if (typeof value === 'string') {
-        root.style.setProperty(`--shadow-${key}`, value);
-      }
-    });
+    // 그림자 변수: theme.shadows가 없으므로 위에서 직접 지정
+    // ... existing code ...
 
     // 테두리 반경 변수
     Object.entries(THEME.borderRadius).forEach(([key, value]) => {
