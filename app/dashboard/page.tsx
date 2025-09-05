@@ -10,10 +10,10 @@ import Reco from '@/features/reco/Reco';
 import { useQuery } from '@tanstack/react-query';
 import { create } from 'zustand';
 import Todo from '@/features/todo/Todo';
-import apiClient from '@/shared/api/client';
+import apiClient from '../../shared/api/client';
 
 // zustand user store
-import { User } from '@/shared/types/api.types';
+import { User } from '../../shared/types/api.types';
 
 interface UserState {
   user: User | null;

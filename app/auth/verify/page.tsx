@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import Header from '@/components/layout/header/Header';
 import { useRouter } from 'next/navigation';
-import apiClient from '@/shared/api/client';
+import apiClient from '../../../shared/api/client';
 import axios from 'axios';
 
 const Mian = styled.main``;

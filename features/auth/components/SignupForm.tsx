@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import styled from '@emotion/styled';
 import { THEME, Z_INDEX } from '@/styles/theme';
 import { Input } from '@/components/ui/Input';
-import apiClient from '@/shared/api/client';
+import apiClient from '../../../shared/api/client';
 import axios from 'axios'; // axios 추가
 
 const Container = styled.div`
