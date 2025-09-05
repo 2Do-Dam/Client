@@ -10,18 +10,7 @@ import Reco from '@/features/reco/Reco';
 import { create } from 'zustand';
 import Todo from '@/features/todo/Todo';
 import apiClient from '../../shared/api/client';
-
-// zustand user store
-import { User } from '../../shared/types/api.types';
-
-interface UserState {
-  user: User | null;
-  setUser: (user: User | null) => void;
-}
-export const useUserStore = create<UserState>((set) => ({
-  user: null,
-  setUser: (user) => set({ user }),
-}));
+import { User } from '../../shared/types/api.types'; 
 
 
 const DashboardWrapper = styled.div`
