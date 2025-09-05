@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { API_ENDPOINTS } from './endpoints';
+import { API_ENDPOINTS } from '../api/endpoints';
 
 import {
   UserRegisterRequest,
