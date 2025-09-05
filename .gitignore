@@ -41,7 +41,3 @@ yarn-error.log*
 next-env.d.ts
 
 *storybook.log
-
-# API 관련 파일 (민감한 정보 포함)
-shared/api/endpoints.ts
-shared/types/api.types.ts
