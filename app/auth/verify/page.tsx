@@ -5,7 +5,7 @@ import { THEME, Z_INDEX } from '@/styles/theme';
 import Header from '@/components/layout/header/Header';
 import { useRouter } from 'next/navigation';
 import apiClient from '../../../shared/api/client';
-import axios from 'axios';
+
 
 const Mian = styled.main``;
 
@@ -192,7 +192,7 @@ export default function Verify() {
     try {
       await apiClient.verifyEmailCode({ email: email, code: verificationCode });
       router.push('/auth/login');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('인증 요청 실패:', error);
       alert('인증 요청에 실패했습니다.');
     }

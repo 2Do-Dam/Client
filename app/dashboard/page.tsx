@@ -7,7 +7,6 @@ import HashtagGenerator from '@/features/hashtag/components/HashtagGenerator';
 import SidebarHeaderLayout from '@/features/sidebar/Sidebar';
 import Report from '@/features/report/Report';
 import Reco from '@/features/reco/Reco';
-import { useQuery } from '@tanstack/react-query';
 import { create } from 'zustand';
 import Todo from '@/features/todo/Todo';
 import apiClient from '../../shared/api/client';
@@ -24,15 +23,6 @@ export const useUserStore = create<UserState>((set) => ({
   setUser: (user) => set({ user }),
 }));
 
-// React Query fetcher
-async function fetchMe() {
-  if (typeof window === 'undefined') return null;
-  const token = localStorage.getItem('access_token');
-  if (!token) return null;
-  const users = await apiClient.getUsers();
-  // getUsers는 배열을 반환하므로, 첫 번째 유저를 반환 (임시)
-  return users;
-}
 
 const DashboardWrapper = styled.div`
   display: flex;
