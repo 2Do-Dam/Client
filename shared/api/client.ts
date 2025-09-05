@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import { API_ENDPOINTS } from './endpoints';
+
 import {
   UserRegisterRequest,
   UserLoginRequest,
@@ -31,7 +32,7 @@ class ApiClient {
 
   constructor() {
     this.client = axios.create({
-      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://floris-server-fastapi-jxxs.onrender.com',
+      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
       timeout: 10000,
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
